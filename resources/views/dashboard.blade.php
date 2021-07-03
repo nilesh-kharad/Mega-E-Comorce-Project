@@ -8,7 +8,7 @@
                 <div class="carousel-item {{$item['id']==1?'active':''}}">
                     <a href="detail/{{$item['id']}}">
                         <img class="d-block w-80 slider-img" src="{{$item['gallary']}}" alt="{{$item['id']}} slide">
-                        <div class="carousel-caption slider-text">
+                        <div class="carousel-caption m-0 slider-text">
                             <h3>{{$item['name']}}</h3>
                             <p>{{$item['description']}}</p>
                         </div>
