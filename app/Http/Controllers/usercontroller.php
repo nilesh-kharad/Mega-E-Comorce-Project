@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Error;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class usercontroller extends Controller
 {
@@ -18,7 +20,7 @@ class usercontroller extends Controller
             } else {
                 return redirect('login');
             }
-        }else{
+        } else {
             return "Email ID Wrong";
         }
     }
@@ -29,6 +31,22 @@ class usercontroller extends Controller
             return redirect('login');
         } else {
             return redirect('login');
+        }
+    }
+    function register(Request $req)
+    {
+        // return $req->input();
+        try {
+            $user = new User();
+            $user->name = $req->name;
+            $user->email = $req->email;
+            $user->password = Hash::make($req->password);
+            $user->save();
+            return redirect('/login');
+        } catch (Throwable $e) {
+            echo '<script>alert("Can not create account");</script>';
+            // function_alert("");
+            // return redirect('');
         }
     }
 }

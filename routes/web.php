@@ -22,7 +22,9 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::view('/register','register');
 Route::post('/login', [usercontroller::class, 'login']);
+Route::post('/register', [usercontroller::class, 'register']);
 Route::get('/logout', [usercontroller::class, 'logout']);
 Route::get('/dashboard', [productController::class, 'index']);
 Route::get('detail/{id}', [productController::class, 'detail']);

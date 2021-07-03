@@ -38,7 +38,8 @@ if (Session()->has('user')) {
                 </ul>
             </li>
             @else
-            <li><a href="login" style="color:aqua">Login</a></li>
+            <li><a href="login" class="m-1" style="color:aqua">Login</a></li>
+            <li><a href="register" class="m-1" style="color:aqua">Register</a></li>
             @endif
         </div>
     </div>
