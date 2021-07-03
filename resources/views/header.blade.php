@@ -26,7 +26,7 @@ if (Session()->has('user')) {
             <button class="btn btn-outline-success my-2 my-sm-0" type="search">Search</button>
         </form>
         <div class="nav navbar-nav navbar-right m-3">
-            <li><a href="" style="color:aqua">Cart({{$total}})</a></li>
+            <li><a href="/cartList" style="color:aqua">Cart({{$total}})</a></li>
             @if (Session()->has('user'))
             <li class="dropdown ml-1">
                 <a class="dropdown-toggle" style="color:aqua" href="" data-toggle="dropdown">

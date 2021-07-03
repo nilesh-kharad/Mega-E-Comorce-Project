@@ -46,6 +46,12 @@
     .custom-product{
         width: auto;
     }
+    .cart-list-devider{
+        border-bottom: 1px solid red;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
     </style>
 
 </head>
