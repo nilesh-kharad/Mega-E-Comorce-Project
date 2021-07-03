@@ -14,17 +14,17 @@ use App\Http\Controllers\productController;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('login');
 });
-
 Route::get('/login', function () {
     return view('login');
 });
-Route::post('login', [usercontroller::class, 'login']);
-Route::get('logout', [usercontroller::class, 'logout']);
-Route::get('dashboard', [productController::class, 'index']);
-
+Route::post('/login', [usercontroller::class, 'login']);
+Route::get('/logout', [usercontroller::class, 'logout']);
+Route::get('/dashboard', [productController::class, 'index']);
 Route::get('detail/{id}', [productController::class, 'detail']);
 Route::get('search', [productController::class, 'search']);
 Route::post('add_to_cart', [productController::class, 'add_to_cart']);

@@ -12,12 +12,9 @@ class productController extends Controller
 {
     function index(Request $req)
     {
-        if (!Session()->has('user')) {
-            return "Login First";
-        } else {
-            $data = products::all();
-            return view('dashboard', ['products' => $data]);
-        }
+
+        $data = products::all();
+        return view('/dashboard', ['products' => $data]);
     }
 
     function detail($id)
@@ -46,11 +43,7 @@ class productController extends Controller
     }
     static function cartItem()
     {
-        if (!Session()->has('user')) {
-            return $userId=0;
-        } else {
-            $userId = session()->get('user')['id'];
-            return cart::where('user_id', $userId)->count();
-        }
+        $userId = session()->get('user')['id'];
+        return cart::where('user_id', $userId)->count();
     }
 }
