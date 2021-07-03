@@ -15,7 +15,7 @@ if (Session()->has('user')) {
                 <a class="nav-link" href="dashboard">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Order</a>
+                <a class="nav-link" href="/myorders">Order</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About-us</a>
