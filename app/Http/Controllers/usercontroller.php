@@ -35,7 +35,6 @@ class usercontroller extends Controller
     }
     function register(Request $req)
     {
-        // return $req->input();
         try {
             $user = new User();
             $user->name = $req->name;
@@ -45,8 +44,6 @@ class usercontroller extends Controller
             return redirect('/login');
         } catch (Throwable $e) {
             echo '<script>alert("Can not create account");</script>';
-            // function_alert("");
-            // return redirect('');
         }
     }
 }
