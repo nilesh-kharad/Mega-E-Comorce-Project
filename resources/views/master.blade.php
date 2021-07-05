@@ -20,11 +20,18 @@
             padding-left: 300px;
             padding-top: 80px;
         }
+        .custom-addproduct{
+            height: 500px;
+            padding-left: 300px;
+            padding-top: 60px;
+        }
 
-        /* #footer{
-        position: fixed;
-        bottom: 0;
-    } */
+        .custom-addproduct label{
+            margin-top: 4px;
+            margin-bottom: 1px;
+        }
+
+
         img.slider-img {
             height: 300px !important;
         }

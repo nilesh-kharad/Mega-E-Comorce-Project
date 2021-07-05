@@ -9,14 +9,16 @@ use App\Models\cart;
 use App\Models\order;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use session;
+use Throwable;
+
 
 class productController extends Controller
 {
     function index(Request $req)
     {
 
-        $data = products::all();
-        return view('/dashboard', ['products' => $data]);
+        $products = products::all();
+        return view('/dashboard', compact('products'));
     }
 
     function detail($id)
@@ -76,17 +78,22 @@ class productController extends Controller
     {
         $userId = session()->get('user')['id'];
         $allcart = cart::where('user_id', $userId)->get();
-        foreach ($allcart as $cart) {
-            $order = new order();
-            $order->product_id = $cart['product_id'];
-            $order->user_id = $cart['user_id'];
-            $order->status = "pending";
-            $order->payment_method = $req->payment;
-            $order->payment_status = "pending";
-            $order->address = $req->address;
-            $order->save();
+        try {
+            foreach ($allcart as $cart) {
+                $order = new order();
+                $order->product_id = $cart['product_id'];
+                $order->user_id = $cart['user_id'];
+                $order->status = "pending";
+                $order->payment_method = $req->payment;
+                $order->payment_status = "pending";
+                $order->address = $req->address;
+                $order->save();
+            }
+            cart::destroy($userId);
+            return redirect('dashboard');
+        } catch (Throwable $e) {
+            echo `<script>alert('{{$e}}');</script>`;
         }
-        return redirect('dashboard');
     }
     function myOrders()
     {
@@ -96,5 +103,28 @@ class productController extends Controller
             ->where('orders.user_id', '=', $userId)
             ->get();
         return view('myorders', ['orders' => $orders]);
+    }
+    function addProducts(Request $req)
+    {
+        $userId = session()->get('user')['name'];
+        if ($userId == 'nilesh sunil kharad') {
+            return view('addproducts');
+        } else {
+            return redirect('dashboard');
+        }
+    }
+    function addProductstoDB(Request $req)
+    {
+        $product = new products();
+        $file = $req->gallary;
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $req->gallary->move('images', $filename);
+        $product->gallary = $filename;
+        $product->name = $req->name;
+        $product->price = $req->price;
+        $product->description = $req->description;
+        $product->category = $req->category;
+        $product->save();
+        return redirect()->back();
     }
 }

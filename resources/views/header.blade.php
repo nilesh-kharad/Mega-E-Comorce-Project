@@ -18,7 +18,7 @@ if (Session()->has('user')) {
                 <a class="nav-link" href="/myorders">Order</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About-us</a>
+                <a class="nav-link" href="/addproducts">Add Products</a>
             </li>
         </ul>
         <form action="/search" class="form-inline my-2 my-lg-0">

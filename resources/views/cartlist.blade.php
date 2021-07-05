@@ -4,12 +4,12 @@
     <div class="col align-item-center">
         <div class="trending-wrapper">
             <h5>Search Results</h5>
-            <a class="btn btn-success" href="/ordernow">Order Now</a>
+            <hr>
             @foreach($products as $item)
             <div class="row searched-item cart-list-devider">
                 <div class="col-sm-3">
                     <a href="detail/{{$item->id}}">
-                        <img class="trending-img" src="{{$item->gallary}}">
+                        <img class="trending-img" src="/images/{{$item->gallary}}">
                     </a>
                 </div>
 
@@ -21,11 +21,11 @@
 
                 <!-- this is for remove from cart options -->
                 <div class="col-sm-3">
-                        <a href="/removecart/{{$item->cart_id}}" class="btn btn-danger">Remove</a>
+                    <a href="/removecart/{{$item->cart_id}}" class="btn btn-danger">Remove</a>
+                    <a class="btn btn-success" href="/ordernow">Order Now</a>
                 </div>
             </div>
             @endforeach
-            <a class="btn btn-success" href="/ordernow">Order Now</a>
         </div>
     </div>
 </div>

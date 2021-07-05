@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <img class="detail-img" src="{{$products['gallary']}}" alt="">
+            <img class="detail-img" src="/images/{{$products['gallary']}}" alt="">
         </div>
         <div class="col-sm-6">
             <a href="/">
@@ -20,7 +20,6 @@
                     <button class="btn btn-success m-3">Buy Now</button>
         </div>
     </div>
-
 </div>
 
 
